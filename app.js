@@ -7,7 +7,9 @@ async function parse_lineups() {
 		'https://www.rotowire.com/soccer/lineups.php?league=MLS'
 	);
 	const page = await lineups_data.text()
+
 	const names_array = helpers.parse_lineups(page);
+	// console.log(names_array)
 	return names_array;
 }
 
@@ -40,13 +42,19 @@ async function run() {
 		return player.positions.includes(1);
 	});
 
+	// console.log(goalkeepers)
+
 	const defenders = sortedPlayersByForm.filter((player) => {
 		return player.positions.includes(2);
 	});
 
+	// console.log(defenders)
+
 	const midfielders = sortedPlayersByForm.filter((player) => {
 		return player.positions.includes(3);
 	});
+
+	// console.log(midfielders)
 
 	const forwards = sortedPlayersByForm.filter((player) => {
 		return player.positions.includes(4);
